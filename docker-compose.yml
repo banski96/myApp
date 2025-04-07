@@ -1,0 +1,37 @@
+services:
+  web:
+    build: .
+    command: ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DB_NAME=CoffeeTable
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+      - DB_HOST=db
+      - DB_PORT=5432
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17.4
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=CoffeeTable
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "CoffeeTable", "-U", "admin"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  postgres_data:

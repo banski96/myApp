@@ -1,0 +1,9 @@
+[flake8]
+ignore = E501
+# Maximum allowed line length (set to 88 for compatibility with Black, which also uses 88 characters)
+max-line-length = 88
+
+# Exclude specific files and directories from flake8 checking
+exclude =
+    .git,
+    __pycache__,
