@@ -1,2 +1,2 @@
 # Ignore Postgres data directory
-pgdata/
+./postgres_data
