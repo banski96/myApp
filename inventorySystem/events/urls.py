@@ -21,5 +21,8 @@ from . import views
 urlpatterns = [
     path('', views.appOverview, name='events'),
     path('event-list/', views.eventList, name='event-list'),
-     path('create-event/', views.createEvent, name='create-event'),
+    path('event-datail/<str:id>', views.viewByID, name='event-datails'),
+    path('create-event/', views.createEvent, name='create-event'),
+    path('update-event/<str:id>', views.updateEvent, name='update-event'),
+    path('delete-event/<str:id>', views.deleteEvent, name='delete-event'),
 ]
