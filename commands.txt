@@ -1,2 +1,11 @@
 docker compose exec web poetry run python manage.py makemigrations
 docker compose exec web poetry run python manage.py migrate
+
+docker-compose exec db psql -U admin -d CoffeeTable  # connect to postgre
+
+ \dt # this shows table
+ \dn
+
+docker-compose down
+
+ docker-compose up --build
