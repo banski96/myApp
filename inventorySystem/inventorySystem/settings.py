@@ -79,8 +79,8 @@ print(os.environ.get('DB_NAME'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME','CoffeeTable'),
-        'USER': os.environ.get('DB_USER','admin'),
+        'NAME': os.environ.get('DB_NAME','alumni'),
+        'USER': os.environ.get('DB_USER','postgres'),
         'PASSWORD': os.environ.get('DB_PASSWORD','admin'),
         'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT'),

@@ -8,3 +8,5 @@ class Events(models.Model):
     location = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
 
+    class Meta:
+        db_table = 'events_events'

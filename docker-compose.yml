@@ -8,8 +8,8 @@ services:
       - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
-      - DB_NAME=CoffeeTable
-      - DB_USER=admin
+      - DB_NAME=alumni
+      - DB_USER=postgres
       - DB_PASSWORD=admin
       - DB_HOST=db
       - DB_PORT=5432
@@ -23,13 +23,13 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=admin
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=CoffeeTable
+      - POSTGRES_DB=alumni
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "pg_isready", "-q", "-d", "CoffeeTable", "-U", "admin"]
+      test: ["CMD", "pg_isready", "-q", "-d", "alumni", "-U", "postgres"]
       interval: 5s
       timeout: 5s
       retries: 5
