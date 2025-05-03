@@ -1,5 +1,6 @@
 docker compose exec web poetry run python manage.py makemigrations
 docker compose exec web poetry run python manage.py migrate
+python manage.py startapp members
 
 docker-compose exec db psql -U admin -d CoffeeTable  # connect to postgre
 
@@ -8,4 +9,6 @@ docker-compose exec db psql -U admin -d CoffeeTable  # connect to postgre
 
 docker-compose down
 
- docker-compose up --build
+docker-compose up --build
+
+poetry run flake8   # to run flake8
