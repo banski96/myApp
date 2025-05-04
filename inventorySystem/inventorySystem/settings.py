@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'programs',
     'alumni',
-    'speakers'
+    'speakers',
+    'registrations'
 ]
 
 MIDDLEWARE = [
