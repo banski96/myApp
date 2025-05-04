@@ -35,3 +35,4 @@ def deleteProgram(resquest, id):
         return HttpResponse({"message": "Program deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
     except Programs.DoesNotExist:
         return HttpResponse({"error": "Program not found"}, status=404)
+    
