@@ -11,5 +11,5 @@ class EventSerializer(serializers.ModelSerializer):
         if data['start_date'] < timezone.now().date():
             raise serializers.ValidationError({"start_date": "Start date cannot be in the past."})
         if data['start_date'] > data['end_date']:
-            raise serializers.ValidationError({"start_date":"Start date should not be greater than end date"})
+            raise serializers.ValidationError({"start_date":"Start date should not be greater than end date."})
         return data
