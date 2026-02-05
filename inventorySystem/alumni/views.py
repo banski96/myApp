@@ -7,7 +7,7 @@ from .models import Alumni
 
 # Create your views here.
 @api_view(['GET'])
-def alumniList(resquest) -> Response:  # TODO: check if the param is needed
+def alumniList(request) -> Response:  # TODO: check if the param is needed
     alumni = Alumni.objects.all()
     serializer = AlumniSerializer(alumni, many=True)
     return Response(serializer.data)
@@ -20,16 +20,17 @@ def createAlumni(request) -> Response:
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST'])
+@api_view(['PATCH'])
 def updateAlumni(request, id) -> Response:
     alumni = Alumni.objects.get(alumni_id=id)
     serializer = AlumniSerializer(instance=alumni, data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
-def deleteAlumni(resquest, id):
+def deleteAlumni(request, id):
     try:
         alumni = Alumni.objects.get(alumni_id=id)
         alumni.delete()
